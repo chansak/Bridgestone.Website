@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { TopBarComponent } from './pages/top-bar/top-bar.component';
+import { ProductListComponent } from './pages/product-list/product-list.component';
+import { ProductAlertsComponent } from './pages/product-alerts/product-alerts.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import {CartService} from './core/services/cart.service';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ProductAlertsComponent,
     ProductDetailsComponent
   ],
+  providers: [CartService],
   bootstrap: [
     AppComponent
   ]
