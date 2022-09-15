@@ -19,7 +19,6 @@ export class SignalrService {
   }
 
   startConnection() {
-    console.log(this.connection.state);
     return new Promise((resolve, reject) => {
       this.connection.start()
         .then(() => {
