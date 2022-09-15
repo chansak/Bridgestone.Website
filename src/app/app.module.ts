@@ -1,32 +1,58 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {HubConnectionBuilder,HubConnection} from "@microsoft/signalr"
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './pages/top-bar/top-bar.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductAlertsComponent } from './pages/product-alerts/product-alerts.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
-import {CartService} from './core/services/cart.service';
+import { CartComponent } from './pages/cart/cart.component';
+import { ShippingComponent } from './pages/shipping/shipping.component';
+import { CartService } from './core/services/cart.service';
+import { AppSettingsService } from './core/services/app-settings-service.service';
+import {SignalrService} from '../app/core/services/signalr.service';
 
+
+
+const routes: Routes = [
+  { path: '', component: ProductListComponent },
+  { path: 'products/:productId', component: ProductDetailsComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'shipping', component: ShippingComponent },
+];
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: ProductListComponent },
-      { path: 'products/:productId', component: ProductDetailsComponent },
-    ])
+    RouterModule.forRoot(routes)
   ],
   declarations: [
     AppComponent,
     TopBarComponent,
     ProductListComponent,
     ProductAlertsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartComponent,
+    ShippingComponent
   ],
-  providers: [CartService],
+  providers: [
+    CartService,SignalrService,
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      deps: [AppSettingsService],
+      useFactory: (appConfigService: AppSettingsService) => {
+        return () => {
+          return appConfigService.loadAppConfig();
+        };
+      }
+    }
+  ],
   bootstrap: [
     AppComponent
   ]

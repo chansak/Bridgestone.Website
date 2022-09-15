@@ -1,29 +1,28 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import { products } from '../../core/models/products';
+import {AppSettingsService} from '../../core/services/app-settings-service.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   products = products;
+  constructor(private settings : AppSettingsService) {
 
+  }
+  ngOnInit(): void {
+    //console.log(this.settings.apiBaseUrl);
+  }
   share() {
     window.alert('The product has been shared!');
   }
-  onClick(){
+  onClick() {
     alert('test');
   }
-  onNotify() {
-    window.alert('You will be notified when the product goes on sale');
+  onNotify(product:any) {
+    console.log(product);
   }
+
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
