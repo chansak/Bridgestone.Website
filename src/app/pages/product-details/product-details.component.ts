@@ -22,6 +22,15 @@ export class ProductDetailsComponent implements OnInit {
 
     // Find the product that correspond with the id provided in route.
     this.product = products.find(product => product.id === productIdFromRoute);
+    this.cartService.getWeatherForecast().subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (e) => {
+        console.log(e);
+      },
+      complete: () => console.log('done'),
+    });
   }
   addToCart(product: Product) {
     this.cartService.addToCart(product);

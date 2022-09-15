@@ -8,6 +8,6 @@
     </a>
   </h3>
     <button type="button" (click)="onClick()">Share</button>
-    <app-product-alerts [product]="product" (notify)="onNotify()">
+    <app-product-alerts [product]="product" (notify)="onNotify($event)">
     </app-product-alerts>
 </div>

@@ -8,6 +8,10 @@ import { Product } from '../../core/models/products';
 export class ProductAlertsComponent {
 
   @Input() product: Product | undefined;
-  @Output() notify = new EventEmitter();
+  @Output() notify = new EventEmitter<any>();
+
+  NotificationWithMessage(value: any) {
+    this.notify.emit(value);
+  }
 
 }
