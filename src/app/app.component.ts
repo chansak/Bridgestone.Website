@@ -13,14 +13,13 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.signalRService.startConnection().then(result => {
-      this.signalRService.connection.invoke("NotifyNewMessage", "test")
-        .then(() => { console.log('message sent successfully to hub'); })
-        .catch((err) => console.log('error while sending a message to hub: ' + err));
+      //do somethings when the connection has been started.
     })
       .catch(err => {
         console.log(err);
       });
-      this.signalRService.connection.on('NotifyNewMessage', (result: any) => {
+      //add listener
+      this.signalRService.connection.on('PushMessage', (result: any) => {
         console.log(result);
       });
   }
