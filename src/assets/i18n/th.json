@@ -1,5 +1,8 @@
 {
     "welcome-back": "ยินดีต้อนรับกลับมา",
     "Project": "โครงการ",
-    "Analytics": "วิเคราะห์"
+    "Analytics": "วิเคราะห์",
+    "VehicleProd": "ประมาณการการผลิตรถยนต์",
+    "TireDemand":"ความต้องการยาง",
+    "SalesDemand":"ความต้องการขาย"
 }

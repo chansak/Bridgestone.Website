@@ -150,5 +150,45 @@ export class LanguagesComponent implements OnInit, OnDestroy
                     navComponent.refresh();
                 });
         }
+        const vehicleProdDashboardItem = this._fuseNavigationService.getItem('dashboards.vehicleprod', navigation);
+        if ( vehicleProdDashboardItem )
+        {
+            this._translocoService.selectTranslate('VehicleProd').pipe(take(1))
+                .subscribe((translation) => {
+
+                    // Set the title
+                    vehicleProdDashboardItem.title = translation;
+
+                    // Refresh the navigation component
+                    navComponent.refresh();
+                });
+        }
+        const tireDemandDashboardItem = this._fuseNavigationService.getItem('dashboards.tiredemand', navigation);
+        if ( tireDemandDashboardItem )
+        {
+            this._translocoService.selectTranslate('TireDemand').pipe(take(1))
+                .subscribe((translation) => {
+
+                    // Set the title
+                    tireDemandDashboardItem.title = translation;
+
+                    // Refresh the navigation component
+                    navComponent.refresh();
+                });
+        }
+        const salesDemandDashboardItem = this._fuseNavigationService.getItem('dashboards.saledemand', navigation);
+        if ( salesDemandDashboardItem )
+        {
+            this._translocoService.selectTranslate('SalesDemand').pipe(take(1))
+                .subscribe((translation) => {
+
+                    // Set the title
+                    salesDemandDashboardItem.title = translation;
+
+                    // Refresh the navigation component
+                    navComponent.refresh();
+                });
+        }
+
     }
 }

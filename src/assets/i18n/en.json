@@ -1,5 +1,8 @@
 {
     "welcome-back": "Welcome back",
     "Project": "Project",
-    "Analytics": "Analytics"
+    "Analytics": "Analytics",
+    "VehicleProd": "Estimate Total",
+    "TireDemand":"Tire Demand",
+    "SalesDemand":"Sales Demand"
 }
