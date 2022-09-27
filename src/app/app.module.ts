@@ -16,6 +16,9 @@ import { appConfig } from 'app/core/config/app.config';
 import { mockApiServices } from 'app/mock-api';
 import { LayoutModule } from 'app/layout/layout.module';
 import { appRoutes } from 'app/app.routing';
+import { VehicleprodComponent } from '@module/admin/dashboards/vehicleprod/vehicleprod.component';
+import { TiredemandComponent } from '@module/admin/dashboards/tiredemand/tiredemand.component';
+import { SalesdemandComponent } from '@module/admin/dashboards/salesdemand/salesdemand.component';
 const routerConfig: ExtraOptions = {
   preloadingStrategy       : PreloadAllModules,
   scrollPositionRestoration: 'enabled'
@@ -41,6 +44,9 @@ const routerConfig: ExtraOptions = {
   ],
   declarations: [
     AppComponent,
+    VehicleprodComponent,
+    TiredemandComponent,
+    SalesdemandComponent,
   ],
   providers:[
     SignalrService

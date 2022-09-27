@@ -2,41 +2,43 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatSelectModule } from '@angular/material/select';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRippleModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { TranslocoModule } from '@ngneat/transloco';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SharedModule } from 'app/shared/shared.module';
-import { CryptoComponent } from 'app/modules/admin/dashboards/crypto/crypto.component';
-import { cryptoRoutes } from 'app/modules/admin/dashboards/crypto/crypto.routing';
+import { LandingHomeComponent } from '@module/admin/dashboards/home/home.component';
+import { landingHomeRoutes } from '@module/admin/dashboards/home/home.routing';
 
 @NgModule({
     declarations: [
-        CryptoComponent
+        LandingHomeComponent
     ],
     imports     : [
-        RouterModule.forChild(cryptoRoutes),
+        RouterModule.forChild(landingHomeRoutes),
         MatButtonModule,
         MatButtonToggleModule,
-        MatFormFieldModule,
+        MatDividerModule,
         MatIconModule,
-        MatInputModule,
         MatMenuModule,
-        MatSelectModule,
+        MatProgressBarModule,
+        MatRippleModule,
         MatSidenavModule,
         MatSortModule,
         MatTableModule,
         MatTabsModule,
         NgApexchartsModule,
+        TranslocoModule,
         SharedModule
     ]
 })
-export class CryptoModule
+export class LandingHomeModule
 {
 }

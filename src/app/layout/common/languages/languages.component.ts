@@ -121,7 +121,6 @@ export class LanguagesComponent implements OnInit, OnDestroy
         // Get the flat navigation data
         const navigation = navComponent.navigation;
 
-        // Get the Project dashboard item and update its title
         const projectDashboardItem = this._fuseNavigationService.getItem('dashboards.project', navigation);
         if ( projectDashboardItem )
         {
@@ -136,7 +135,6 @@ export class LanguagesComponent implements OnInit, OnDestroy
                 });
         }
 
-        // Get the Analytics dashboard item and update its title
         const analyticsDashboardItem = this._fuseNavigationService.getItem('dashboards.analytics', navigation);
         if ( analyticsDashboardItem )
         {
@@ -184,6 +182,19 @@ export class LanguagesComponent implements OnInit, OnDestroy
 
                     // Set the title
                     salesDemandDashboardItem.title = translation;
+
+                    // Refresh the navigation component
+                    navComponent.refresh();
+                });
+        }
+        const homeDashboardItem = this._fuseNavigationService.getItem('dashboards.home', navigation);
+        if ( homeDashboardItem )
+        {
+            this._translocoService.selectTranslate('Home').pipe(take(1))
+                .subscribe((translation) => {
+
+                    // Set the title
+                    homeDashboardItem.title = translation;
 
                     // Refresh the navigation component
                     navComponent.refresh();

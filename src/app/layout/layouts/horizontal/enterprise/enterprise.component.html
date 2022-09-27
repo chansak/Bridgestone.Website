@@ -53,15 +53,15 @@
                     <fuse-fullscreen class="hidden md:block"></fuse-fullscreen>
                     <search [appearance]="'bar'"></search>
                     <!-- <shortcuts></shortcuts> -->
-                    <messages></messages>
-                    <notifications></notifications>
+                    <!-- <messages></messages>
+                    <notifications></notifications> -->
                     <!-- <button
                         class="lg:hidden"
                         mat-icon-button
                         (click)="quickChat.toggle()">
                         <mat-icon [svgIcon]="'heroicons_outline:chat-alt-2'"></mat-icon>
-                    </button>
-                    <user></user> -->
+                    </button>-->
+                    <user [showAvatar]="false"></user>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
     <!-- Footer -->
     <div class="relative flex flex-0 justify-center w-full px-6 md:px-8 z-49 border-t bg-card print:hidden">
         <div class="flex items-center w-full max-w-360 h-14 sm:h-20">
-            <span class="font-medium text-secondary">Fuse &copy; {{currentYear}}</span>
+            <span class="font-medium text-secondary">&copy; {{currentYear}} Bridgestone Sales (Thailand) Co.,Ltd.</span>
         </div>
     </div>
 

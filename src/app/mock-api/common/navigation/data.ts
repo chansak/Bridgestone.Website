@@ -3,32 +3,47 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
+        id   : 'dashboards.home',
+        title: 'Home',
+        type : 'basic',
+        icon : 'heroicons_outline:home',
+        link : '/dashboards/home',
+    },
+    {
         id      : 'dashboards',
         title   : 'Bridgestone',
         subtitle: 'OE Budget Sytem',
         type    : 'group',
-        icon    : 'heroicons_outline:home',
+        icon    : 'mat_outline:apps',
         children: [
             {
                 id   : 'dashboards.vehicleprod',
                 title: 'Estimate Vehicle Production',
                 type : 'collapsable',
-                icon : 'heroicons_outline:clipboard-check',
-                link : '/dashboards/project',
+                icon : 'mat_outline:directions_car_filled',
+                link : '/dashboards/vehicleprod',
                 children:[
+                    {
+                        id        : 'dashboards.vehicleprod.home',
+                        title     : 'Search',
+                        type      : 'basic',
+                        icon      : "heroicons_outline:document-search",
+                        link      : '/dashboards/vehicleprod',
+                        exactMatch: true
+                    },
                     {
                         id   : 'dashboards.vehicleprod.upload',
                         title: 'Upload File',
                         type : 'basic',
                         icon : 'heroicons_outline:upload',
-                        link : '/dashboards/project/upload'
+                        link : '/dashboards/vehicleprod/upload'
                     },
                     {
                         id   : 'dashboards.vehicleprod.search',
                         title: 'Status checking',
                         type : 'basic',
-                        icon: 'heroicons_outline:check',
-                        link : '/dashboards/project/search'
+                        icon: 'heroicons_outline:clipboard-list',
+                        link : '/dashboards/vehicleprod/checking'
                     },
                 ]
             },
@@ -36,21 +51,29 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 id   : 'dashboards.tiredemand',
                 title: 'Tire Demand',
                 type : 'collapsable',
-                icon : 'heroicons_outline:clipboard-check',
+                icon : 'mat_solid:album',
                 link : '/dashboards/tiredemand',
                 children:[
                     {
-                        id   : 'dashboards.vehicleprod.upload',
+                        id        : 'dashboards.tiredemand.home',
+                        title     : 'Search',
+                        type      : 'basic',
+                        icon      : "heroicons_outline:document-search",
+                        link      : '/dashboards/tiredemand',
+                        exactMatch: true
+                    },
+                    {
+                        id   : 'dashboards.tiredemand.upload',
                         title: 'Upload File',
                         type : 'basic',
                         icon : 'heroicons_outline:upload',
                         link : '/dashboards/tiredemand/upload'
                     },
                     {
-                        id   : 'dashboards.vehicleprod.search',
+                        id   : 'dashboards.tiredemand.search',
                         title: 'Status checking',
                         type : 'basic',
-                        icon: 'heroicons_outline:check',
+                        icon: 'heroicons_outline:clipboard-list',
                         link : '/dashboards/tiredemand/search'
                     },
                 ]
@@ -59,21 +82,29 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 id   : 'dashboards.saledemand',
                 title: 'Sales Demand',
                 type : 'collapsable',
-                icon : 'heroicons_outline:clipboard-check',
+                icon : 'mat_solid:attach_money',
                 link : '/dashboards/saledemand',
                 children:[
                     {
-                        id   : 'dashboards.vehicleprod.upload',
+                        id        : 'dashboards.saledemand.home',
+                        title     : 'Search',
+                        type      : 'basic',
+                        icon      : "heroicons_outline:document-search",
+                        link      : '/dashboards/saledemand',
+                        exactMatch: true
+                    },
+                    {
+                        id   : 'dashboards.saledemand.upload',
                         title: 'Upload File',
                         type : 'basic',
                         icon : 'heroicons_outline:upload',
                         link : '/dashboards/saledemand/upload'
                     },
                     {
-                        id   : 'dashboards.vehicleprod.search',
+                        id   : 'dashboards.saledemand.search',
                         title: 'Status checking',
                         type : 'basic',
-                        icon: 'heroicons_outline:check',
+                        icon: 'heroicons_outline:clipboard-list',
                         link : '/dashboards/saledemand/search'
                     },
                 ]
@@ -94,7 +125,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
             {
                 id      : 'app.settings.master',
                 title   : 'Master Data',
-                icon    : 'heroicons_outline:check-circle',
+                icon    : 'heroicons_outline:database',
                 type    : 'collapsable',
                 children: [
                     {
@@ -210,38 +241,158 @@ export const futuristicNavigation: FuseNavigationItem[] = [
 ];
 export const horizontalNavigation: FuseNavigationItem[] = [
     {
+        id   : 'dashboards.home',
+        title: 'Home',
+        subtitle: 'Dashboard',
+        type : 'basic',
+        icon : 'heroicons_outline:home',
+        link : '/dashboards/home',
+    },
+    {
         id      : 'dashboards',
-        title   : 'Dashboards',
+        title   : 'Bridgestone',
+        subtitle: 'OE Budget Sytem',
         type    : 'group',
-        icon    : 'heroicons_outline:home',
-        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+        icon    : 'mat_outline:apps',
+        children: [
+            {
+                id   : 'dashboards.vehicleprod',
+                title: 'Estimate Vehicle Production',
+                type : 'collapsable',
+                icon : 'mat_outline:directions_car_filled',
+                link : '/dashboards/vehicleprod',
+                children:[
+                    {
+                        id        : 'dashboards.vehicleprod.home',
+                        title     : 'Search',
+                        type      : 'basic',
+                        icon      : "heroicons_outline:document-search",
+                        link      : '/dashboards/vehicleprod',
+                        exactMatch: true
+                    },
+                    {
+                        id   : 'dashboards.vehicleprod.upload',
+                        title: 'Upload File',
+                        type : 'basic',
+                        icon : 'heroicons_outline:upload',
+                        link : '/dashboards/vehicleprod/upload'
+                    },
+                    {
+                        id   : 'dashboards.vehicleprod.search',
+                        title: 'Status checking',
+                        type : 'basic',
+                        icon: 'heroicons_outline:clipboard-list',
+                        link : '/dashboards/vehicleprod/checking'
+                    },
+                ]
+            },
+            {
+                id   : 'dashboards.tiredemand',
+                title: 'Tire Demand',
+                type : 'collapsable',
+                icon : 'mat_solid:album',
+                link : '/dashboards/tiredemand',
+                children:[
+                    {
+                        id        : 'dashboards.tiredemand.home',
+                        title     : 'Search',
+                        type      : 'basic',
+                        icon      : "heroicons_outline:document-search",
+                        link      : '/dashboards/tiredemand',
+                        exactMatch: true
+                    },
+                    {
+                        id   : 'dashboards.tiredemand.upload',
+                        title: 'Upload File',
+                        type : 'basic',
+                        icon : 'heroicons_outline:upload',
+                        link : '/dashboards/tiredemand/upload'
+                    },
+                    {
+                        id   : 'dashboards.tiredemand.search',
+                        title: 'Status checking',
+                        type : 'basic',
+                        icon: 'heroicons_outline:clipboard-list',
+                        link : '/dashboards/tiredemand/search'
+                    },
+                ]
+            },
+            {
+                id   : 'dashboards.saledemand',
+                title: 'Sales Demand',
+                type : 'collapsable',
+                icon : 'mat_solid:attach_money',
+                link : '/dashboards/saledemand',
+                children:[
+                    {
+                        id        : 'dashboards.saledemand.home',
+                        title     : 'Search',
+                        type      : 'basic',
+                        icon      : "heroicons_outline:document-search",
+                        link      : '/dashboards/saledemand',
+                        exactMatch: true
+                    },
+                    {
+                        id   : 'dashboards.saledemand.upload',
+                        title: 'Upload File',
+                        type : 'basic',
+                        icon : 'heroicons_outline:upload',
+                        link : '/dashboards/saledemand/upload'
+                    },
+                    {
+                        id   : 'dashboards.saledemand.search',
+                        title: 'Status checking',
+                        type : 'basic',
+                        icon: 'heroicons_outline:clipboard-list',
+                        link : '/dashboards/saledemand/search'
+                    },
+                ]
+            },
+        ]
     },
     {
-        id      : 'apps',
-        title   : 'Apps',
-        type    : 'group',
-        icon    : 'heroicons_outline:qrcode',
-        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+        id  : 'divider-1',
+        type: 'divider'
     },
     {
-        id      : 'pages',
-        title   : 'Pages',
-        type    : 'group',
-        icon    : 'heroicons_outline:document-duplicate',
-        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
-    },
-    {
-        id      : 'user-interface',
-        title   : 'UI',
-        type    : 'group',
-        icon    : 'heroicons_outline:collection',
-        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
-    },
-    {
-        id      : 'navigation-features',
-        title   : 'Misc',
+        id      : 'app.settings',
+        title   : 'Application',
+        subtitle: 'Settings',
         type    : 'group',
         icon    : 'heroicons_outline:menu',
-        children: [] // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
+        children: [
+            {
+                id      : 'app.settings.master',
+                title   : 'Master Data',
+                icon    : 'heroicons_outline:database',
+                type    : 'collapsable',
+                children: [
+                    {
+                        id      : 'app.settings.master.vehicle',
+                        title   : 'Vehicle',
+                        type    : 'collapsable',
+                        children: [
+                            {
+                                id      : 'app.settings.master.vehicle.band',
+                                title   : 'Brand',
+                                type    : 'basic',
+                            }
+                        ]
+                    },
+                    {
+                        id      : 'app.settings.master.tire',
+                        title   : 'Tire',
+                        type    : 'collapsable',
+                        children: [
+                            {
+                                id      : 'app.settings.master.tire.band',
+                                title   : 'AAA',
+                                type    : 'basic',
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 ];
