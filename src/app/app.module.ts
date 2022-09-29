@@ -16,9 +16,9 @@ import { appConfig } from 'app/core/config/app.config';
 import { mockApiServices } from 'app/mock-api';
 import { LayoutModule } from 'app/layout/layout.module';
 import { appRoutes } from 'app/app.routing';
-import { VehicleprodComponent } from '@module/admin/dashboards/vehicleprod/vehicleprod.component';
-import { TiredemandComponent } from '@module/admin/dashboards/tiredemand/tiredemand.component';
-import { SalesdemandComponent } from '@module/admin/dashboards/salesdemand/salesdemand.component';
+import { BrandComponent } from './modules/admin/setting/master/vehicle/brand/brand.component';
+import { ModelComponent } from './modules/admin/setting/master/vehicle/model/model.component';
+import { FuseAlertModule } from '@fuse/components/alert';
 const routerConfig: ExtraOptions = {
   preloadingStrategy       : PreloadAllModules,
   scrollPositionRestoration: 'enabled'
@@ -30,23 +30,18 @@ const routerConfig: ExtraOptions = {
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes,routerConfig),
-    // Fuse, FuseConfig & FuseMockAPI
     FuseModule,
     FuseConfigModule.forRoot(appConfig),
     FuseMockApiModule.forRoot(mockApiServices),
-
-    // Core module of your application
+    FuseAlertModule,
     CoreModule,
-
-    // Layout module of your application
     LayoutModule,
 
   ],
   declarations: [
     AppComponent,
-    VehicleprodComponent,
-    TiredemandComponent,
-    SalesdemandComponent,
+    BrandComponent,
+    ModelComponent,
   ],
   providers:[
     SignalrService

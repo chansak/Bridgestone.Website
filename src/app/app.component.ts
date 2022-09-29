@@ -22,16 +22,16 @@ export class AppComponent implements OnInit {
   
     }
     ngOnInit(): void {
-      this.signalRService.startConnection()
-        .then(result => {
-            //do somethings after connect started
-        })
-        .catch(err => {
-            console.log(err);
-        });
+      // this.signalRService.startConnection()
+      //   .then(result => {
+      //       //do somethings after connect started
+      //   })
+      //   .catch(err => {
+      //       console.log(err);
+      //   });
         
-        this.signalRService.connection.on('PushMessage', (result: any) => {
-          console.log(result);
-        });
+        // this.signalRService.connection.on('PushMessage', (result: any) => {
+        //   console.log(result);
+        // });
     }
   }

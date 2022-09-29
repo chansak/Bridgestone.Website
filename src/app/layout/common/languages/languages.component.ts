@@ -134,21 +134,7 @@ export class LanguagesComponent implements OnInit, OnDestroy
                     navComponent.refresh();
                 });
         }
-
-        const analyticsDashboardItem = this._fuseNavigationService.getItem('dashboards.analytics', navigation);
-        if ( analyticsDashboardItem )
-        {
-            this._translocoService.selectTranslate('Analytics').pipe(take(1))
-                .subscribe((translation) => {
-
-                    // Set the title
-                    analyticsDashboardItem.title = translation;
-
-                    // Refresh the navigation component
-                    navComponent.refresh();
-                });
-        }
-        const vehicleProdDashboardItem = this._fuseNavigationService.getItem('dashboards.vehicleprod', navigation);
+        const vehicleProdDashboardItem = this._fuseNavigationService.getItem('app.vehicleprod', navigation);
         if ( vehicleProdDashboardItem )
         {
             this._translocoService.selectTranslate('VehicleProd').pipe(take(1))
@@ -161,7 +147,7 @@ export class LanguagesComponent implements OnInit, OnDestroy
                     navComponent.refresh();
                 });
         }
-        const tireDemandDashboardItem = this._fuseNavigationService.getItem('dashboards.tiredemand', navigation);
+        const tireDemandDashboardItem = this._fuseNavigationService.getItem('app.tiredemand', navigation);
         if ( tireDemandDashboardItem )
         {
             this._translocoService.selectTranslate('TireDemand').pipe(take(1))
@@ -174,7 +160,7 @@ export class LanguagesComponent implements OnInit, OnDestroy
                     navComponent.refresh();
                 });
         }
-        const salesDemandDashboardItem = this._fuseNavigationService.getItem('dashboards.saledemand', navigation);
+        const salesDemandDashboardItem = this._fuseNavigationService.getItem('app.saledemand', navigation);
         if ( salesDemandDashboardItem )
         {
             this._translocoService.selectTranslate('SalesDemand').pipe(take(1))
