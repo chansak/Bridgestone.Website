@@ -3,6 +3,7 @@ import { AuthGuard } from '@core/auth/guards/auth.guard';
 import { NoAuthGuard } from '@core/auth/guards/noAuth.guard';
 import { LayoutComponent } from '@layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
+import {UploadResolver} from '@module/admin/app/vehicleprod/upload/upload.resolvers';
 
 // @formatter:off
 /* eslint-disable max-len */

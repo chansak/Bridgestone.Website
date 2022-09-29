@@ -38,7 +38,7 @@ export class UploadComponent implements OnInit
                 refFiles: [''],
             })
         });
-       
+        this.dismiss('notification');
     }
     onFileSelected(event) {
         this.files = [];
