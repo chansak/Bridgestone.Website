@@ -355,6 +355,17 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         type: 'divider'
     },
     {
+        id      : 'app.report',
+        title   : 'Report',
+        type    : 'group',
+        icon    : 'mat_outline:bar_chart',
+        children: []
+    },
+    {
+        id  : 'divider-1',
+        type: 'divider'
+    },
+    {
         id      : 'app.settings',
         title   : 'Application',
         subtitle: 'Settings',
