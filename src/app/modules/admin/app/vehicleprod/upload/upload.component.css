@@ -4,3 +4,6 @@
 mat-form-field {
   width: 40%;
 }
+.mat-step-header .mat-step-icon-state-edit {
+background-color: green !important
+}

@@ -39,6 +39,9 @@
                 <mat-horizontal-stepper
                     [linear]="true"
                     #horizontalStepper>
+                    <ng-template matStepperIcon="edit">
+                        <mat-icon>check</mat-icon>
+                    </ng-template>
                     <mat-step
                         [formGroupName]="'step1'"
                         [stepControl]="horizontalStepperForm.get('step1')"
@@ -172,7 +175,8 @@
                     <mat-step
                         [formGroupName]="'step3'"
                         [stepControl]="horizontalStepperForm.get('step3')"
-                        #horizontalStepperStep3>
+                        #horizontalStepperStep3
+                        [optional]="true">
                         <ng-template matStepLabel>Reference Files</ng-template>
                         <p class="my-6 font-medium">
                             Select reference upload files
