@@ -25,7 +25,7 @@
     <fuse-alert
         [appearance]="'soft'"
         [dismissible]="true"
-        [dismissed]="true"
+        [dismissed]="false"
         [name]="'notification'"
         [type]="'success'">
         The files have been uploaded successfully.
@@ -56,9 +56,9 @@
                                     [formControlName]="'year'"
                                     [placeholder]="'Year'"
                                     required>
-                                    <mat-option value="country-1">2022</mat-option>
-                                    <mat-option value="country-2">2021</mat-option>
-                                    <mat-option value="country-3">2022</mat-option>
+                                    <mat-option value="2022">2022</mat-option>
+                                    <mat-option value="2021">2021</mat-option>
+                                    <mat-option value="2020">2020</mat-option>
                                 </mat-select>
                                 <mat-icon
                                     class="icon-size-5"
@@ -140,6 +140,9 @@
                                                         <div
                                                             class="truncate"
                                                             [matTooltip]="file.name">{{file.name}}</div>
+                                                        <ng-container *ngIf="file.size">
+                                                            <div class="text-secondary truncate">{{file.size/1024| number : '1.0-2'}}Kb</div>
+                                                        </ng-container>
                                                         <ng-container *ngIf="file.contents">
                                                             <div class="text-secondary truncate">{{file.contents}}</div>
                                                         </ng-container>
@@ -226,6 +229,9 @@
                                                         <div
                                                             class="truncate"
                                                             [matTooltip]="file.name">{{file.name}}</div>
+                                                        <ng-container *ngIf="file.size">
+                                                            <div class="text-secondary truncate">{{file.size/1024| number : '1.0-2'}}Kb</div>
+                                                        </ng-container>
                                                         <ng-container *ngIf="file.contents">
                                                             <div class="text-secondary truncate">{{file.contents}}</div>
                                                         </ng-container>

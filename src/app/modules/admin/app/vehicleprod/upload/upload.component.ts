@@ -1,15 +1,16 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Item, Items } from '@module/admin/app/vehicleprod/upload/item.types';
 import { FuseAlertService } from '@fuse/components/alert';
-
+import {UploadService} from '@module/admin/app/vehicleprod/upload/upload.service';
+import { UploadFileInfo } from './upload.fileinfo';
 
 @Component({
     selector: 'app-upload',
     templateUrl: './upload.component.html',
     styleUrls: ['./upload.component.css'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
 })
 
 export class UploadComponent implements OnInit
@@ -18,8 +19,13 @@ export class UploadComponent implements OnInit
     // fileName :string;
     files:Item[];
     refFiles:Item[];
-    constructor(private _formBuilder: UntypedFormBuilder,private _fuseAlertService: FuseAlertService )
+    //uploadFileInfo:UploadFileInfo;
+    constructor(
+        private _formBuilder: UntypedFormBuilder,
+        private _fuseAlertService: FuseAlertService,
+        private _uploadService: UploadService)
     {
+
     }
     ngOnInit(): void
     {
@@ -38,7 +44,6 @@ export class UploadComponent implements OnInit
                 refFiles: [''],
             })
         });
-        this.dismiss('notification');
     }
     onFileSelected(event) {
         this.files = [];
@@ -52,7 +57,8 @@ export class UploadComponent implements OnInit
                 this.files.push({
                     name: file.name,
                     size:file.size,
-                    type:'XLS'
+                    type:'XLS',
+                    blobFile:file
                 });
             });
         }
@@ -69,14 +75,15 @@ export class UploadComponent implements OnInit
                 this.refFiles.push({
                     name: file.name,
                     size:file.size,
-                    type:'XLS'
+                    type:'XLS',
+                    blobFile:file
                 });
             });
             console.log(this.refFiles);
         }
     }
     uploaEstimateTotalVehicleProduction():void{
-        this.show('notification');
+        this.upload();
     }
     dismiss(name: string): void
     {
@@ -85,5 +92,26 @@ export class UploadComponent implements OnInit
     show(name: string): void
     {
         this._fuseAlertService.show(name);
+    }
+    upload():void{
+        let root = this;
+        const formData = new FormData();
+        formData.append("Year",this.horizontalStepperForm.value.step1.year);
+        formData.append("Version",this.horizontalStepperForm.value.step1.version);
+        Array.from<any>(this.files).forEach(file => {
+            formData.append("files",file.blobFile,file.name);
+        });
+        if(this.refFiles.length>0){
+            Array.from<any>(this.refFiles).forEach(file => {
+                formData.append("files",file.blobFile,file.name);
+            });
+        }
+        this._uploadService.upload(formData).subscribe(
+            (event: any) => {
+                root.show('notification');
+                setTimeout(() => {
+                    root.dismiss('notification');
+                 }, 2000)
+            });
     }
 }

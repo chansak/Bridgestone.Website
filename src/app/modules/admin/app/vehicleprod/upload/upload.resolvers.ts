@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
 import { FuseAlertService } from '@fuse/components/alert';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -25,11 +26,8 @@ export class UploadResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>
-    {
-        return new Observable((subscriber) => {
-            this._fuseAlertService.dismiss('notification');
-            subscriber.complete();
-        });
-    }
+    resolve(): Observable<any> {
+        this._fuseAlertService.dismiss('notification');
+        return of('Resolve').pipe(delay(1000));
+      }
 }
