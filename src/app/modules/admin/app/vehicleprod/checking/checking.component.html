@@ -18,14 +18,61 @@
             <div class="mt-2">
                 <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
                     Upload File Status Tracking
-                </h2>
+                </h2> 
             </div>
         </div>
     </div>
-    <!-- Main -->
-    <div class="flex-auto p-6 sm:p-10">
+    <div class="flex-auto p-6">
         <div class="max-w-8xl">
-            <ngx-json-viewer [json]="data"></ngx-json-viewer>
+            <mat-card>
+                <mat-card-title>Progress Bar</mat-card-title>
+                <mat-card-subtitle>File Name: VehicleProd-2.xlsx, Year: 2022, Version: 2</mat-card-subtitle>
+                <form class="p-4 overflow-hidden">
+                    <mat-horizontal-stepper
+                        [disableRipple]="false"
+                        [linear]="false"
+                        #horizontalStepper>
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon>check</mat-icon>
+                        </ng-template>
+                        <mat-step
+                            #horizontalStepperStep1>
+                            <ng-template matStepLabel>Upload</ng-template>
+                        </mat-step>
+    
+                        <mat-step
+                            #horizontalStepperStep2>
+                            <ng-template matStepLabel>Header Validation</ng-template>
+                        </mat-step>
+    
+                        <mat-step
+                            #horizontalStepperStep3>
+                            <ng-template matStepLabel>Data Validation</ng-template>
+                        </mat-step>
+                        <mat-step
+                            #horizontalStepperStep3>
+                            <ng-template matStepLabel>Data Transformation</ng-template>
+                        </mat-step>
+                        <mat-step
+                            #horizontalStepperStep3>
+                            <ng-template matStepLabel>Notification</ng-template>
+                        </mat-step>
+    
+                        <mat-step>
+                            <ng-template matStepLabel>Done</ng-template>
+                        </mat-step>
+                    </mat-horizontal-stepper>
+                </form>
+              </mat-card>
+        </div>
+    </div>
+    <!-- Main -->
+    <div class="flex-auto">
+        <div class="max-w-8xl">
+            <mat-card>
+                <mat-card-title class="color:red">Found {{data.length}} error(s)</mat-card-title>
+            <ngx-json-viewer [json]="data" [expanded]="false"></ngx-json-viewer>
+            </mat-card> 
         </div>
     </div>
 </div>

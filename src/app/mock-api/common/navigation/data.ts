@@ -5,107 +5,107 @@ export const defaultNavigation: FuseNavigationItem[] = [
     {
         id   : 'dashboards.home',
         title: 'Home',
+        subtitle: 'Dashboard',
         type : 'basic',
         icon : 'heroicons_outline:home',
         link : '/dashboards/home',
     },
     {
-        id      : 'dashboards',
-        title   : 'Bridgestone',
+        id      : 'app',
+        title   : 'Application Modules',
         subtitle: 'OE Budget Sytem',
         type    : 'group',
         icon    : 'mat_outline:apps',
         children: [
             {
-                id   : 'dashboards.vehicleprod',
+                id   : 'app.vehicleprod',
                 title: 'Estimate Vehicle Production',
                 type : 'collapsable',
                 icon : 'mat_outline:directions_car_filled',
-                link : '/dashboards/vehicleprod',
                 children:[
                     {
-                        id        : 'dashboards.vehicleprod.home',
+                        id        : 'app.vehicleprod.search',
                         title     : 'Search',
                         type      : 'basic',
                         icon      : "heroicons_outline:document-search",
-                        link      : '/dashboards/vehicleprod',
+                        link      : '/app/vehicleprod/search',
                         exactMatch: true
                     },
                     {
-                        id   : 'dashboards.vehicleprod.upload',
+                        id   : 'app.vehicleprod.upload',
                         title: 'Upload File',
                         type : 'basic',
                         icon : 'heroicons_outline:upload',
-                        link : '/dashboards/vehicleprod/upload'
+                        link : '/app/vehicleprod/upload'
                     },
                     {
-                        id   : 'dashboards.vehicleprod.search',
+                        id   : 'app.vehicleprod.checking',
                         title: 'Status checking',
                         type : 'basic',
                         icon: 'heroicons_outline:clipboard-list',
-                        link : '/dashboards/vehicleprod/checking'
+                        link : '/app/vehicleprod/checking'
                     },
                 ]
             },
             {
-                id   : 'dashboards.tiredemand',
+                id   : 'app.tiredemand',
                 title: 'Tire Demand',
                 type : 'collapsable',
                 icon : 'mat_solid:album',
-                link : '/dashboards/tiredemand',
+                link : '/app/tiredemand',
                 children:[
                     {
-                        id        : 'dashboards.tiredemand.home',
+                        id        : 'app.tiredemand.home',
                         title     : 'Search',
                         type      : 'basic',
                         icon      : "heroicons_outline:document-search",
-                        link      : '/dashboards/tiredemand',
+                        link      : '/app/tiredemand',
                         exactMatch: true
                     },
                     {
-                        id   : 'dashboards.tiredemand.upload',
+                        id   : 'app.tiredemand.upload',
                         title: 'Upload File',
                         type : 'basic',
                         icon : 'heroicons_outline:upload',
-                        link : '/dashboards/tiredemand/upload'
+                        link : '/app/tiredemand/upload'
                     },
                     {
-                        id   : 'dashboards.tiredemand.search',
+                        id   : 'app.tiredemand.search',
                         title: 'Status checking',
                         type : 'basic',
                         icon: 'heroicons_outline:clipboard-list',
-                        link : '/dashboards/tiredemand/search'
+                        link : '/app/tiredemand/search'
                     },
                 ]
             },
             {
-                id   : 'dashboards.saledemand',
+                id   : 'app.saledemand',
                 title: 'Sales Demand',
                 type : 'collapsable',
                 icon : 'mat_solid:attach_money',
-                link : '/dashboards/saledemand',
+                link : '/app/saledemand',
                 children:[
                     {
-                        id        : 'dashboards.saledemand.home',
+                        id        : 'app.saledemand.home',
                         title     : 'Search',
                         type      : 'basic',
                         icon      : "heroicons_outline:document-search",
-                        link      : '/dashboards/saledemand',
+                        link      : '/app/saledemand',
                         exactMatch: true
                     },
                     {
-                        id   : 'dashboards.saledemand.upload',
+                        id   : 'app.saledemand.upload',
                         title: 'Upload File',
                         type : 'basic',
                         icon : 'heroicons_outline:upload',
-                        link : '/dashboards/saledemand/upload'
+                        link : '/app/saledemand/upload'
                     },
                     {
-                        id   : 'dashboards.saledemand.search',
+                        id   : 'app.saledemand.search',
                         title: 'Status checking',
                         type : 'basic',
                         icon: 'heroicons_outline:clipboard-list',
-                        link : '/dashboards/saledemand/search'
+                        link : '/app/saledemand/search'
                     },
                 ]
             },
@@ -116,37 +116,56 @@ export const defaultNavigation: FuseNavigationItem[] = [
         type: 'divider'
     },
     {
-        id      : 'app.settings',
+        id      : 'app.report',
+        title   : 'Report',
+        subtitle: 'Reports & Charts',
+        type    : 'group',
+        icon    : 'mat_outline:bar_chart',
+        children: []
+    },
+    {
+        id  : 'divider-1',
+        type: 'divider'
+    },
+    {
+        id      : 'setting',
         title   : 'Application',
         subtitle: 'Settings',
         type    : 'group',
         icon    : 'heroicons_outline:menu',
         children: [
             {
-                id      : 'app.settings.master',
+                id      : 'setting.master',
                 title   : 'Master Data',
                 icon    : 'heroicons_outline:database',
                 type    : 'collapsable',
                 children: [
                     {
-                        id      : 'app.settings.master.vehicle',
+                        id      : 'setting.master.vehicle',
                         title   : 'Vehicle',
                         type    : 'collapsable',
                         children: [
                             {
-                                id      : 'app.settings.master.vehicle.band',
+                                id      : 'setting.master.vehicle.brand',
                                 title   : 'Brand',
                                 type    : 'basic',
+                                link : '/setting/master/vehicle/brand'
+                            },
+                            {
+                                id      : 'setting.master.vehicle.model',
+                                title   : 'Model',
+                                type    : 'basic',
+                                link    : '/setting/master/vehicle/model'
                             }
                         ]
                     },
                     {
-                        id      : 'app.settings.master.tire',
+                        id      : 'setting.master.tire',
                         title   : 'Tire',
                         type    : 'collapsable',
                         children: [
                             {
-                                id      : 'app.settings.master.tire.band',
+                                id      : 'setting.master.tire.band',
                                 title   : 'AAA',
                                 type    : 'basic',
                             }
