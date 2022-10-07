@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -5,6 +6,7 @@ import { Item, Items } from '@module/admin/app/vehicleprod/upload/item.types';
 import { FuseAlertService } from '@fuse/components/alert';
 import {UploadService} from '@module/admin/app/vehicleprod/upload/upload.service';
 import { UploadFileInfo } from './upload.fileinfo';
+import { Guid } from 'guid-typescript';
 
 @Component({
     selector: 'app-upload',
@@ -21,6 +23,7 @@ export class UploadComponent implements OnInit
     refFiles:Item[];
     //uploadFileInfo:UploadFileInfo;
     constructor(
+        private router:Router,
         private _formBuilder: UntypedFormBuilder,
         private _fuseAlertService: FuseAlertService,
         private _uploadService: UploadService)
@@ -95,9 +98,11 @@ export class UploadComponent implements OnInit
     }
     upload():void{
         let root = this;
+        let newFileName = Guid.create();
         const formData = new FormData();
         formData.append("Year",this.horizontalStepperForm.value.step1.year);
         formData.append("Version",this.horizontalStepperForm.value.step1.version);
+        formData.append("NewFileName",newFileName.toString());
         Array.from<any>(this.files).forEach(file => {
             formData.append("files",file.blobFile,file.name);
         });
@@ -108,10 +113,7 @@ export class UploadComponent implements OnInit
         }
         this._uploadService.upload(formData).subscribe(
             (event: any) => {
-                root.show('notification');
-                setTimeout(() => {
-                    root.dismiss('notification');
-                 }, 2000)
+                this.router.navigateByUrl('/app/vehicleprod/checking/'+ newFileName);
             });
     }
 }
