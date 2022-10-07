@@ -3,7 +3,6 @@ import { AuthGuard } from '@core/auth/guards/auth.guard';
 import { NoAuthGuard } from '@core/auth/guards/noAuth.guard';
 import { LayoutComponent } from '@layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
-import {UploadResolver} from '@module/admin/app/vehicleprod/upload/upload.resolvers';
 
 // @formatter:off
 /* eslint-disable max-len */
@@ -82,7 +81,10 @@ export const appRoutes: Route[] = [
             
             {path: 'app', children: [
                 {path: 'vehicleprod', children: [
-                    {path: 'checking/:id', loadChildren: () => import('app/modules/admin/app/vehicleprod/checking/checking.module').then(m => m.CheckingModule)},
+                    {
+                        path: 'checking/:id', 
+                        loadChildren: () => import('app/modules/admin/app/vehicleprod/checking/checking.module').then(m => m.CheckingModule),
+                    },
                     {path: 'search', loadChildren: () => import('app/modules/admin/app/vehicleprod/search/search.module').then(m => m.SearchModule)},
                     {path: 'upload', loadChildren: () => import('app/modules/admin/app/vehicleprod/upload/upload.module').then(m => m.UploadModule)}
                 ]},

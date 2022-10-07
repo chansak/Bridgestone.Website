@@ -15,12 +15,10 @@ import {UploadComponent} from '@module/admin/app/vehicleprod/upload/upload.compo
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FuseAlertModule } from '@fuse/components/alert';
 import { FuseAlertService } from '@fuse/components/alert';
-import {UploadResolver} from '@module/admin/app/vehicleprod/upload/upload.resolvers';
 export const routes: Route[] = [
   {
       path     : '',
       component: UploadComponent,
-      resolve: { message: UploadResolver }
   }
 ];
 @NgModule({
