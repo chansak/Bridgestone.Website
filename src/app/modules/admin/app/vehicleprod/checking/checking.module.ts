@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 import { CheckingComponent} from '@module/admin/app/vehicleprod/checking/checking.component'
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import {SignalrService} from '@core/signalr/signalr.service';
 import { MatStepperModule ,MatStepper } from '@angular/material/stepper';
 export const routes: Route[] = [
   {
@@ -20,9 +22,10 @@ export const routes: Route[] = [
     MatIconModule,
     NgxJsonViewerModule,
     MatStepperModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
-  providers:[MatStepper]
+  providers:[MatStepper,SignalrService]
 })
 export class CheckingModule {
   

@@ -7,7 +7,9 @@ import * as signalR from "@microsoft/signalr"
 export class SignalrService {
 
   connection: signalR.HubConnection;
-
+  connectionId:string;
+  refreshTime:number=5000;
+  interval:any;
   constructor() {
     this.connection = new signalR.HubConnectionBuilder()
       .withUrl('/signalr/notify',{
@@ -17,13 +19,18 @@ export class SignalrService {
       .withAutomaticReconnect([100])
       .build();
   }
-
+  getConnection(){
+    return this.connection;
+  }
   startConnection() {
     return new Promise((resolve, reject) => {
       this.connection.start()
         .then(() => {
           console.log("connection established");
-          return resolve(true);
+          this.getConnectionId().then((connectionId)=>{
+            console.log(connectionId);
+            return resolve(this.connectionId);
+          });
         })
         .catch((err: any) => {
           console.log("error occured" + err);
@@ -31,4 +38,17 @@ export class SignalrService {
         });
     });
   }
+  stopConnection() {
+    console.log('stop interval');
+    this.connection.stop();
+  }
+  getConnectionId():Promise<string> {
+    return new Promise((resolve, reject) => {
+    this.connection.invoke('getconnectionid')
+    .then((connectionId:string) => {
+        this.connectionId = connectionId;
+        return resolve(connectionId);
+      });
+    });
+  } 
 }

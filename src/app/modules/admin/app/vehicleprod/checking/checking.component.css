@@ -1,3 +1,11 @@
 ::ng-deep .mat-horizontal-stepper-header{
     pointer-events: none !important;
 }
+.hidden{
+    display: none;
+}
+.spinner-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

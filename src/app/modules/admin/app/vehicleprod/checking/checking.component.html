@@ -25,9 +25,14 @@
     <div class="flex-auto p-6">
         <div class="max-w-8xl">
             <mat-card>
-                <!-- <mat-card-title>Progress Bar</mat-card-title> -->
-                <mat-card-subtitle>File Name: VehicleProd-2.xlsx, Year: 2022, Version: 2, Upload Date: 2022-10-07 22:35:27.560</mat-card-subtitle>
-                <form class="p-4 overflow-hidden">
+                <div class="flex flex-nowrap" *ngIf="fileDetail != null">
+                    <div>File Name: {{fileDetail.originalFileName}} | Year: {{fileDetail.year}} | Version: {{fileDetail.version}} | CreateDate: {{fileDetail.createdDate|date}}</div>
+                    <div>&nbsp;</div>
+                    <!-- <div><mat-progress-spinner *ngIf="showSpinner" mode="indeterminate" diameter="17"></mat-progress-spinner>&nbsp;</div> -->
+                    <div class="spinner-wrapper">
+                        &nbsp;&nbsp;|&nbsp;&nbsp;<mat-spinner [diameter]="17"></mat-spinner><span>&nbsp;&nbsp;In Processing</span>
+                      </div>
+                </div>
                     <mat-horizontal-stepper
                         [disableRipple]="false"
                         [linear]="false"
@@ -38,36 +43,41 @@
                         <mat-step
                             #horizontalStepperStep1>
                             <ng-template matStepLabel>Upload</ng-template>
+                            <button id="step1" class="hidden" mat-button matStepperNext >Next</button>
                         </mat-step>
     
                         <mat-step
                             #horizontalStepperStep2>
                             <ng-template matStepLabel>Header Validation</ng-template>
+                            <button id="step2" class="hidden" mat-button matStepperNext >Next</button>
                         </mat-step>
     
                         <mat-step
                             #horizontalStepperStep3>
                             <ng-template matStepLabel>Data Validation</ng-template>
+                            <button id="step3" class="hidden" mat-button matStepperNext >Next</button>
                         </mat-step>
                         <mat-step
                             #horizontalStepperStep3>
                             <ng-template matStepLabel>Data Transformation</ng-template>
+                            <button id="step4" class="hidden" mat-button matStepperNext >Next</button>
                         </mat-step>
                         <mat-step
                             #horizontalStepperStep3>
                             <ng-template matStepLabel>Notification</ng-template>
+                            <button id="step5" class="hidden" mat-button matStepperNext >Next</button>
                         </mat-step>
     
                         <mat-step>
                             <ng-template matStepLabel>Done</ng-template>
+                            <button id="step5" class="hidden" mat-button matStepperReset >Reset</button>
                         </mat-step>
                     </mat-horizontal-stepper>
-                </form>
               </mat-card>
         </div>
     </div>
     <!-- Main -->
-    <div class="flex-auto">
+    <div class="flex-auto" *ngIf="horizontalStepper.selectedIndex>=3">
         <div class="max-w-8xl">
             <mat-card>
                 <mat-card-title class="color:red">Found {{data.length}} error(s)</mat-card-title>
