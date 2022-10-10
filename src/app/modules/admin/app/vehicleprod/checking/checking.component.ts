@@ -23,6 +23,7 @@ export class CheckingComponent implements OnInit {
   interval:any;
   fileDetail:any;
   showSpinner:boolean;
+  showLoading:boolean;
   constructor(
     private route: ActivatedRoute,
     private checkingService:CheckingService,
@@ -44,50 +45,26 @@ export class CheckingComponent implements OnInit {
     }).catch(err => {});
     
     this.signalRService.connection.on('UploadFileTracking', (data: any) => {
-      this.fileDetail = data;
-      console.log(this.fileDetail);
       let status = parseInt(data.statusId);
+      this.stepper.reset();
       if(status == uploadFileSteps.Done){
         this.signalRService.getConnection().stop();
         clearInterval(this.interval);
         this.showSpinner=false;
+        this.showLoading=false;
       }else{
-        this.stepper.reset();
-        var btnStep1 = document.getElementById('step1') as HTMLElement;
-        var btnStep2 = document.getElementById('step2') as HTMLElement;
-        var btnStep3 = document.getElementById('step3') as HTMLElement;
-        var btnStep4 = document.getElementById('step4') as HTMLElement;
-        var btnStep5 = document.getElementById('step5') as HTMLElement;
-        var btnStep6 = document.getElementById('step6') as HTMLElement;
-        while(this.stepper.selectedIndex < status)
+        this.showLoading = true;
+        this.showSpinner = true;
+        if((status == uploadFileSteps.HeaderValidation ||status == uploadFileSteps.DataValidation) && this.data.length>0)
         {
-          switch(data.statusId){
-            case 1:{
-              btnStep1.click();
-              break;
-            }
-            case 2:{
-              btnStep2.click();
-              break;
-            }
-            case 3:{
-              btnStep3.click();
-              break;
-            }
-            case 4:{
-              btnStep4.click();
-              break;
-            }
-            case 5:{
-              btnStep5.click();
-              break;
-            }
-            case 6:{
-              break;
-            }
-          }
+          this.fileDetail = data;
+          this.showSpinner=false;
+          this.showLoading=false;
         }
-    }
+      }
+      for(var step=0;step<status;step++){
+        this.stepper.next();
+      }
     });
   }
 }
