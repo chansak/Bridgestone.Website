@@ -28,11 +28,6 @@
             <mat-card>
                 <div class="flex flex-nowrap" *ngIf="fileDetail != null">
                     <div>File Name: {{fileDetail.originalFileName}} | Year: {{fileDetail.year}} | Version: {{fileDetail.version}} | CreateDate: {{fileDetail.createdDate|date}}</div>
-                    <div>&nbsp;</div>
-                    <!-- <div><mat-progress-spinner *ngIf="showSpinner" mode="indeterminate" diameter="17"></mat-progress-spinner>&nbsp;</div> -->
-                    <!-- <div class="spinner-wrapper">
-                        &nbsp;&nbsp;|&nbsp;&nbsp;<mat-spinner [diameter]="17"></mat-spinner><span>&nbsp;&nbsp;In Processing</span>
-                      </div> -->
                 </div>
                     <mat-horizontal-stepper
                         [disableRipple]="false"
@@ -72,6 +67,10 @@
                         </mat-step>
                     </mat-horizontal-stepper>
               </mat-card>
+              <div class="spinner-wrapper mt-10">
+                <!-- <mat-spinner [diameter]="25"></mat-spinner> -->
+                <h2>&nbsp;&nbsp;The file is in processing. Please wait until it is done or termiate the process.</h2>
+            </div>
         </div>
     </div>
     <!-- Main -->

@@ -13,5 +13,5 @@ export class UploadService {
   // Returns an observable
   upload(formData:FormData):Observable<any> {
       return this.http.post<any>('/api/VehicleProd/UploadFiles',formData);
-      }
+  }
 }

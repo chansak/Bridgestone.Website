@@ -7,6 +7,7 @@ import { MatStepper } from '@angular/material/stepper';
 import {CheckingService} from '@module/admin/app/vehicleprod/checking/checking.service';
 import { SignalrService } from '@core/signalr/signalr.service';
 import {uploadFileSteps} from '@core/models/uploadFileSteps';
+import {SharedService} from '@core/shared/shared.service';
 
 @Component({
   selector: 'app-checking',
@@ -22,12 +23,14 @@ export class CheckingComponent implements OnInit {
   refreshTime:number=3000;
   interval:any;
   fileDetail:any;
+  showFileDetail:boolean;
   showSpinner:boolean;
   showLoading:boolean;
   constructor(
     private route: ActivatedRoute,
     private checkingService:CheckingService,
     private signalRService: SignalrService, 
+    private sharedServices: SharedService,
     private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -45,25 +48,29 @@ export class CheckingComponent implements OnInit {
     }).catch(err => {});
     
     this.signalRService.connection.on('UploadFileTracking', (data: any) => {
-      let status = parseInt(data.statusId);
-      this.stepper.reset();
-      if(status == uploadFileSteps.Done){
-        this.signalRService.getConnection().stop();
-        clearInterval(this.interval);
-        this.showSpinner=false;
-        this.showLoading=false;
-      }else{
-        this.showLoading = true;
-        this.showSpinner = true;
-        if((status == uploadFileSteps.HeaderValidation ||status == uploadFileSteps.DataValidation) && this.data.length>0)
-        {
-          this.fileDetail = data;
+      try
+      {
+        let status = parseInt(data.statusId);
+        this.stepper.reset();
+        if(status == uploadFileSteps.Done){
+          this.signalRService.getConnection().stop();
+          clearInterval(this.interval);
           this.showSpinner=false;
           this.showLoading=false;
+        }else{
+          this.showLoading = true;
+          this.showSpinner = true;
+          if((status == uploadFileSteps.HeaderValidation ||status == uploadFileSteps.DataValidation) && this.data.length>0)
+          {
+            this.showSpinner=false;
+            this.showLoading=false;
+          }
         }
-      }
-      for(var step=0;step<status;step++){
-        this.stepper.next();
+        for(var step=0;step<status;step++){
+          this.stepper.next();
+        }
+      }catch{}finally{
+        this.fileDetail = data;
       }
     });
   }

@@ -38,13 +38,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                         icon : 'heroicons_outline:upload',
                         link : '/app/vehicleprod/upload'
                     },
-                    {
-                        id   : 'app.vehicleprod.checking',
-                        title: 'Status checking',
-                        type : 'basic',
-                        icon: 'heroicons_outline:clipboard-list',
-                        link : '/app/vehicleprod/checking'
-                    },
+                    // {
+                    //     id   : 'app.vehicleprod.checking',
+                    //     title: 'Status checking',
+                    //     type : 'basic',
+                    //     icon: 'heroicons_outline:clipboard-list',
+                    //     link : '/app/vehicleprod/checking'
+                    // },
                 ]
             },
             {
@@ -295,13 +295,13 @@ export const horizontalNavigation: FuseNavigationItem[] = [
                         icon : 'heroicons_outline:upload',
                         link : '/app/vehicleprod/upload'
                     },
-                    {
-                        id   : 'app.vehicleprod.checking',
-                        title: 'Status checking',
-                        type : 'basic',
-                        icon: 'heroicons_outline:clipboard-list',
-                        link : '/app/vehicleprod/checking'
-                    },
+                    // {
+                    //     id   : 'app.vehicleprod.checking',
+                    //     title: 'Status checking',
+                    //     type : 'basic',
+                    //     icon: 'heroicons_outline:clipboard-list',
+                    //     link : '/app/vehicleprod/checking'
+                    // },
                 ]
             },
             {

@@ -98,4 +98,7 @@ export class EnterpriseLayoutComponent implements OnInit, OnDestroy
             navigation.toggle();
         }
     }
+    search():void{
+        console.log('search');
+    }
 }
