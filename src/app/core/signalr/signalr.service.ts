@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as signalR from "@microsoft/signalr"
+import { HubConnectionState } from '@microsoft/signalr';
 
 @Injectable({
   providedIn: 'root'
@@ -23,20 +24,35 @@ export class SignalrService {
     return this.connection;
   }
   startConnection() {
-    return new Promise((resolve, reject) => {
-      this.connection.start()
-        .then(() => {
-          console.log("connection established");
-          this.getConnectionId().then((connectionId)=>{
-            console.log(connectionId);
-            return resolve(this.connectionId);
+    console.log(this.connection.state);
+    if(this.connection.state == HubConnectionState.Disconnected)
+    {
+      return new Promise((resolve, reject) => {
+        this.connection.start()
+          .then(() => {
+            console.log("connection established");
+            this.getConnectionId().then((connectionId)=>{
+              console.log(connectionId);
+              return resolve(this.connectionId);
+            });
+          })
+          .catch((err: any) => {
+            console.log("error occured" + err);
+            reject(err);
           });
+      });
+    }else{
+      return new Promise((resolve, reject) => {
+        this.getConnectionId().then((connectionId)=>{
+          console.log(connectionId);
+          return resolve(this.connectionId);
         })
         .catch((err: any) => {
           console.log("error occured" + err);
           reject(err);
         });
-    });
+      });
+    }
   }
   stopConnection() {
     console.log('stop interval');

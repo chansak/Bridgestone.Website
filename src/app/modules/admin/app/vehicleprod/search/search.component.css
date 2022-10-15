@@ -12,3 +12,7 @@
   .link{
     text-decoration: underline;
   }
+  :host ::ng-deep .mat-form-field-wrapper{
+    margin: 0 !important;
+    padding: 0;
+  }

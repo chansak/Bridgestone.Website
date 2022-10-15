@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       year     : ['', [Validators.required]],
-      version  : ['', Validators.required],
+      version  : ['*', Validators.required],
   });
   }
   search(){

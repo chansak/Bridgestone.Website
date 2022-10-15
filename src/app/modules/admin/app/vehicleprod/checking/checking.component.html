@@ -27,7 +27,7 @@
         <div class="max-w-8xl">
             <mat-card>
                 <div class="flex flex-nowrap" *ngIf="fileDetail != null">
-                    <div>File Name: {{fileDetail.originalFileName}} | Year: {{fileDetail.year}} | Version: {{fileDetail.version}} | CreateDate: {{fileDetail.createdDate|date}}</div>
+                    <div>File Name: {{fileDetail.originalFileName}} | Year: {{fileDetail.year}} | Version: {{fileDetail.version}} | CreateDate: {{fileDetail.createdDate|date:'short'}}</div>
                 </div>
                     <mat-horizontal-stepper
                         [disableRipple]="false"
@@ -67,15 +67,15 @@
                         </mat-step>
                     </mat-horizontal-stepper>
               </mat-card>
-              <div class="spinner-wrapper mt-10">
+              <div class="spinner-wrapper mt-10" *ngIf="fileDetail">
                 <!-- <mat-spinner [diameter]="25"></mat-spinner> -->
-                <h2>&nbsp;&nbsp;The file is in processing. Please wait until it is done or termiate the process.</h2>
+                <h2 *ngIf="!fileDetail.isDone">&nbsp;&nbsp;The file is in process. Please wait until it is done.</h2>
             </div>
         </div>
     </div>
     <!-- Main -->
     <div class="flex-auto" *ngIf="horizontalStepper.selectedIndex==2 ||horizontalStepper.selectedIndex==3">
-        <div class="max-w-8xl">
+        <div class="max-w-8xl" *ngIf="data != null">
             <mat-card>
                 <mat-card-title class="color:red">Found {{data.length}} error(s)</mat-card-title>
             <ngx-json-viewer [json]="data" [expanded]="false"></ngx-json-viewer>

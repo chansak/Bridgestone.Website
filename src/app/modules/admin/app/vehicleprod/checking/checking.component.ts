@@ -35,6 +35,7 @@ export class CheckingComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    console.log(this.id);
     this.checkingService.getData(this.id).subscribe((response)=>{
       this.data = response;
     });
@@ -52,7 +53,11 @@ export class CheckingComponent implements OnInit {
       {
         let status = parseInt(data.statusId);
         this.stepper.reset();
-        if(status == uploadFileSteps.Done){
+        console.log(data);
+        for(var step=0;step<status;step++){
+          this.stepper.next();
+        }
+        if(status == uploadFileSteps.Done || data.isDone){
           this.signalRService.getConnection().stop();
           clearInterval(this.interval);
           this.showSpinner=false;
@@ -65,9 +70,6 @@ export class CheckingComponent implements OnInit {
             this.showSpinner=false;
             this.showLoading=false;
           }
-        }
-        for(var step=0;step<status;step++){
-          this.stepper.next();
         }
       }catch{}finally{
         this.fileDetail = data;
