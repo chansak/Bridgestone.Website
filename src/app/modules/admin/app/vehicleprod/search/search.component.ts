@@ -13,7 +13,7 @@ import _ from 'lodash';
 export class SearchComponent implements OnInit {
   form: UntypedFormGroup;
   dataSource:UploadedFile[]=[];
-  columndefs : any[] = ['fileName','year','version','createdDate'];
+  columndefs : any[] = ['fileName','year','version','status','createdDate'];
   constructor(private _activatedRoute: ActivatedRoute,
     private _formBuilder: UntypedFormBuilder,
     private _router: Router,

@@ -101,7 +101,7 @@
                                 <ng-container *ngIf="files.length > 0">
                                     <div>
                                         <div class="font-medium">Files</div>
-                                        <span *ngIf="files.length>0">You selectedw: {{files.length}} file(s)</span>
+                                        <span *ngIf="files.length>0">You selected: {{files.length}} file(s)</span>
                                         <div
                                             class="flex flex-wrap -m-2 mt-2">
                                             <ng-container *ngFor="let file of files; trackBy:trackByFn">
@@ -190,7 +190,7 @@
                                 <ng-container *ngIf="refFiles.length > 0">
                                     <div>
                                         <div class="font-medium">Files</div>
-                                        <span *ngIf="refFiles.length>0">You selectedw: {{refFiles.length}} file(s)</span>
+                                        <span *ngIf="refFiles.length>0">You selected: {{refFiles.length}} file(s)</span>
                                         <div
                                             class="flex flex-wrap -m-2 mt-2">
                                             <ng-container *ngFor="let file of refFiles; trackBy:trackByFn">
@@ -237,6 +237,7 @@
                                 mat-flat-button
                                 [color]="'accent'"
                                 type="button"
+                                [disabled]="clicked"
                                 matStepperPrevious>
                                 Back
                             </button>
@@ -246,6 +247,7 @@
                                 [color]="'primary'"
                                 type="button"
                                 (click)="uploaEstimateTotalVehicleProduction()"
+                                [disabled]="clicked"
                                 matStepperNext>
                                 Next
                             </button>
@@ -257,7 +259,7 @@
                         <p class="my-6 font-medium">
                             You have done uploading the files.
                         </p>
-                        <div class="flex justify-end mt-8">
+                        <!-- <div class="flex justify-end mt-8">
                             <button
                                 class="px-8 mr-2"
                                 mat-flat-button
@@ -274,7 +276,7 @@
                                 (click)="horizontalStepper.reset();">
                                 Reset
                             </button>
-                        </div>
+                        </div> -->
                     </mat-step>
                 </mat-horizontal-stepper>
             </form>

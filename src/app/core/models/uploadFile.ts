@@ -6,6 +6,8 @@ export interface UploadedFile {
     statusId:number;
     year:number;
     version:number;
+    statusText:string;
+    isDone:boolean;
     isActive:boolean;
     createdDate:Date;
 }

@@ -21,6 +21,7 @@ export class UploadComponent implements OnInit
     // fileName :string;
     files:Item[];
     refFiles:Item[];
+    clicked:boolean;
     //uploadFileInfo:UploadFileInfo;
     constructor(
         private router:Router,
@@ -97,6 +98,7 @@ export class UploadComponent implements OnInit
         this._fuseAlertService.show(name);
     }
     upload():void{
+        this.clicked = true;
         let root = this;
         let newFileName = Guid.create();
         const formData = new FormData();

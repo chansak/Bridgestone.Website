@@ -9,6 +9,7 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import {SignalrService} from '@core/signalr/signalr.service';
 import { MatStepperModule ,MatStepper } from '@angular/material/stepper';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatTableModule } from '@angular/material/table';
 export const routes: Route[] = [
   {
       path     : '',
@@ -25,7 +26,8 @@ export const routes: Route[] = [
     MatStepperModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule
   ],
   providers:[MatStepper,SignalrService]
 })

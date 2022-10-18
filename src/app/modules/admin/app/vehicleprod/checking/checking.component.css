@@ -9,3 +9,6 @@
     align-items: center;
     justify-content: center;
   }
+  .result-table {
+    width: 100%;
+  }
