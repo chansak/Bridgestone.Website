@@ -12,3 +12,7 @@
   .result-table {
     width: 100%;
   }
+  ::ng-deep th.mat-header-cell{
+    width: 10%;
+    min-width: 10%;
+}

@@ -22,6 +22,8 @@ export class UploadComponent implements OnInit
     files:Item[];
     refFiles:Item[];
     clicked:boolean;
+    selectedYear:string;
+    _version: number;
     //uploadFileInfo:UploadFileInfo;
     constructor(
         private router:Router,
@@ -117,5 +119,17 @@ export class UploadComponent implements OnInit
             (event: any) => {
                 this.router.navigateByUrl('/app/vehicleprod/checking/'+ newFileName);
             });
+    }
+    onYearSelecting(event){
+        let year = this.horizontalStepperForm.value.step1.year;
+        this._uploadService.getNextFileVersion(year).subscribe((version)=>{
+            //this.horizontalStepperForm.controls['step1'].value.controls['version'].setValue(version);
+            //this.horizontalStepperForm.get('step1').value.version = version;
+            //.setValue(version);
+            this.horizontalStepperForm.controls['step1'].setValue({
+                year:year,
+                version:version
+            });
+        });
     }
 }

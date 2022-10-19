@@ -47,6 +47,8 @@
                                 <mat-select
                                     [formControlName]="'year'"
                                     [placeholder]="'Year'"
+                                    [(ngModel)]="selectedYear"
+                                    (selectionChange)="onYearSelecting($event)"
                                     required>
                                     <mat-option value="2022">2022</mat-option>
                                     <mat-option value="2021">2021</mat-option>
@@ -59,6 +61,8 @@
                                     matInput
                                     [formControlName]="'version'"
                                     [placeholder]="'Version'"
+                                    readonly
+                                    disabled
                                     required>
                             </mat-form-field>
                         </div>
