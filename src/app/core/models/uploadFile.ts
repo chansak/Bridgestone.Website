@@ -11,4 +11,23 @@ export interface UploadedFile {
     isActive:boolean;
     createdDate:Date;
 }
+export interface VehicleProductionResponse{
+    domexp:string;
+    year0 :number
+    year1 :number
+    year2 :number
+    year3 :number
+    year4 :number
+    year5 :number
+    year6 :number
+    year7 :number
+    year8 :number
+    year9 :number
+}
+export interface EstimateTotalVehicleProdResponse{
+    uploadFileId:string;
+    year:number;
+    version:number;
+    vehicleProds:VehicleProductionResponse[];
+}
   

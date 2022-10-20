@@ -8,6 +8,7 @@ import {CheckingService} from '@module/admin/app/vehicleprod/checking/checking.s
 import { SignalrService } from '@core/signalr/signalr.service';
 import {uploadFileSteps} from '@core/models/uploadFileSteps';
 import {SharedService} from '@core/shared/shared.service';
+import { EstimateTotalVehicleProdResponse } from '@core/models/uploadFile';
 
 @Component({
   selector: 'app-checking',
@@ -29,7 +30,7 @@ export class CheckingComponent implements OnInit {
   showSpinner:boolean;
   showLoading:boolean;
   dataSource:any[]=[];
-  currentYear:number;
+  currentYear:number=0;
   columndefs : any[] = ['domexp'];
   constructor(
     private route: ActivatedRoute,
@@ -62,8 +63,16 @@ export class CheckingComponent implements OnInit {
           if(status == uploadFileSteps.HeaderValidation ||status == uploadFileSteps.DataValidation)
           {
             this.showDone=true;
-            this.checkingService.getData(this.id).subscribe((response)=>{
+            this.checkingService.getTrackingData(this.id).subscribe((response)=>{
               this.data = response;
+            });
+          }else{
+            this.checkingService.getUploadData(this.id).subscribe((response:EstimateTotalVehicleProdResponse)=>{
+              this.currentYear = response.year;
+              for(var i=0;i<9;i++){
+                this.columndefs.push((this.currentYear+i).toString());
+              }
+              this.dataSource =response.vehicleProds;
             });
           }
           this.signalRService.getConnection().stop();
@@ -81,23 +90,6 @@ export class CheckingComponent implements OnInit {
           this.fileDetail = data;
       }
     });
-    this.currentYear = new Date().getFullYear();
-    for(var i=0;i<9;i++){
-      this.columndefs.push((this.currentYear+i).toString());
-    }
-    this.dataSource.push({
-      domexp:'BMW',
-      year0:123,
-      year1:123,
-      year2:123,
-      year3:123,
-      year4:123,
-      year5:123,
-      year6:123,
-      year7:123,
-      year8:123,
-      year9:123,
-    });
-    console.log(this.dataSource);
+
   }
 }
