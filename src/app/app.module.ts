@@ -19,6 +19,7 @@ import { appRoutes } from 'app/app.routing';
 import { BrandComponent } from './modules/admin/setting/master/vehicle/brand/brand.component';
 import { ModelComponent } from './modules/admin/setting/master/vehicle/model/model.component';
 import { FuseAlertModule } from '@fuse/components/alert';
+import { UploadComponent } from './modules/admin/app/tiredemand/upload/upload.component';
 const routerConfig: ExtraOptions = {
   preloadingStrategy       : PreloadAllModules,
   scrollPositionRestoration: 'enabled'
@@ -42,6 +43,7 @@ const routerConfig: ExtraOptions = {
     AppComponent,
     BrandComponent,
     ModelComponent,
+    UploadComponent,
   ],
   providers:[
     SignalrService

@@ -85,10 +85,22 @@ export const appRoutes: Route[] = [
                         path: 'checking/:id', 
                         loadChildren: () => import('app/modules/admin/app/vehicleprod/checking/checking.module').then(m => m.CheckingModule),
                     },
-                    {path: 'search', loadChildren: () => import('app/modules/admin/app/vehicleprod/search/search.module').then(m => m.SearchingModule)},
+                    {
+                        path: 'search', loadChildren: () => import('app/modules/admin/app/vehicleprod/search/search.module').then(m => m.SearchingModule)},
                     {
                         path: 'upload', 
                         loadChildren: () => import('app/modules/admin/app/vehicleprod/upload/upload.module').then(m => m.UploadModule)
+                    }
+                ]},
+                {
+                    path: 'tiredemand', children: [
+                    // {
+                    //     path: 'checking/:id', 
+                    //     loadChildren: () => import('app/modules/admin/app/vehicleprod/checking/checking.module').then(m => m.CheckingModule),
+                    // },
+                    {
+                        path: 'upload', 
+                        loadChildren: () => import('app/modules/admin/app/tiredemand/upload/upload.module').then(m => m.UploadModule)
                     }
                 ]},
             ]},

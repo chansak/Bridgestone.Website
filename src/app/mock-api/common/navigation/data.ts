@@ -55,26 +55,11 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link : '/app/tiredemand',
                 children:[
                     {
-                        id        : 'app.tiredemand.home',
-                        title     : 'Search',
-                        type      : 'basic',
-                        icon      : "heroicons_outline:document-search",
-                        link      : '/app/tiredemand',
-                        exactMatch: true
-                    },
-                    {
                         id   : 'app.tiredemand.upload',
                         title: 'Upload File',
                         type : 'basic',
                         icon : 'heroicons_outline:upload',
                         link : '/app/tiredemand/upload'
-                    },
-                    {
-                        id   : 'app.tiredemand.search',
-                        title: 'Status checking',
-                        type : 'basic',
-                        icon: 'heroicons_outline:clipboard-list',
-                        link : '/app/tiredemand/search'
                     },
                 ]
             },
@@ -295,13 +280,6 @@ export const horizontalNavigation: FuseNavigationItem[] = [
                         icon : 'heroicons_outline:upload',
                         link : '/app/vehicleprod/upload'
                     },
-                    // {
-                    //     id   : 'app.vehicleprod.checking',
-                    //     title: 'Status checking',
-                    //     type : 'basic',
-                    //     icon: 'heroicons_outline:clipboard-list',
-                    //     link : '/app/vehicleprod/checking'
-                    // },
                 ]
             },
             {
@@ -312,26 +290,11 @@ export const horizontalNavigation: FuseNavigationItem[] = [
                 link : '/app/tiredemand',
                 children:[
                     {
-                        id        : 'app.tiredemand.home',
-                        title     : 'Search',
-                        type      : 'basic',
-                        icon      : "heroicons_outline:document-search",
-                        link      : '/app/tiredemand',
-                        exactMatch: true
-                    },
-                    {
                         id   : 'app.tiredemand.upload',
                         title: 'Upload File',
                         type : 'basic',
                         icon : 'heroicons_outline:upload',
                         link : '/app/tiredemand/upload'
-                    },
-                    {
-                        id   : 'app.tiredemand.search',
-                        title: 'Status checking',
-                        type : 'basic',
-                        icon: 'heroicons_outline:clipboard-list',
-                        link : '/app/tiredemand/search'
                     },
                 ]
             },
