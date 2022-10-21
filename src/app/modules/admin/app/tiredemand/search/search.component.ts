@@ -3,17 +3,17 @@ import { UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angul
 import { ActivatedRoute, Router } from '@angular/router';
 import { UploadedFile } from '@core/models/uploadFile';
 import { SharedService } from '@core/shared/shared.service';
-import _ from 'lodash';
 
 @Component({
-  selector: 'app-vp-search',
+  selector: 'app-td-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
 })
-export class SearchComponent implements OnInit {
+export class TireDemandSearchComponent implements OnInit {
   form: UntypedFormGroup;
-  dataSource:UploadedFile[]=[];
+  dataSource: UploadedFile[];
   columndefs : any[] = ['fileName','year','version','status','createdDate'];
+  selectedYear:number;
   constructor(private _activatedRoute: ActivatedRoute,
     private _formBuilder: UntypedFormBuilder,
     private _router: Router,
@@ -22,16 +22,24 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       year     : ['', [Validators.required]],
-      version  : ['*', Validators.required],
-  });
+      version  : ['0', Validators.required],
+    });
   }
   search(){
     const formData = new FormData();
         formData.append("Year",this.form.value.year);
         formData.append("Version",this.form.value.version);
     this.sharedServices.searchFilesByYearAndVersion(formData).subscribe((response:UploadedFile[])=>{
-      console.log(response);
       this.dataSource = response;
+    });
+  }
+  onYearSelecting(event){
+    let year = this.form.value.year;
+    this.sharedServices.getLatestFileVersion(year).subscribe((version:number)=>{
+      this.form.setValue({
+          year:year,
+          version:version
+      });
     });
   }
 }

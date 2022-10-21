@@ -55,11 +55,11 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link : '/app/tiredemand',
                 children:[
                     {
-                        id   : 'app.tiredemand.upload',
+                        id   : 'app.tiredemand.search',
                         title: 'Upload File',
                         type : 'basic',
-                        icon : 'heroicons_outline:upload',
-                        link : '/app/tiredemand/upload'
+                        icon : 'heroicons_outline:search',
+                        link : '/app/tiredemand/search'
                     },
                 ]
             },
@@ -290,11 +290,11 @@ export const horizontalNavigation: FuseNavigationItem[] = [
                 link : '/app/tiredemand',
                 children:[
                     {
-                        id   : 'app.tiredemand.upload',
+                        id   : 'app.tiredemand.search',
                         title: 'Upload File',
                         type : 'basic',
                         icon : 'heroicons_outline:upload',
-                        link : '/app/tiredemand/upload'
+                        link : '/app/tiredemand/search'
                     },
                 ]
             },

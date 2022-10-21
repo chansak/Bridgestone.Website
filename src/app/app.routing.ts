@@ -99,8 +99,8 @@ export const appRoutes: Route[] = [
                     //     loadChildren: () => import('app/modules/admin/app/vehicleprod/checking/checking.module').then(m => m.CheckingModule),
                     // },
                     {
-                        path: 'upload', 
-                        loadChildren: () => import('app/modules/admin/app/tiredemand/upload/upload.module').then(m => m.UploadModule)
+                        path: 'search', 
+                        loadChildren: () => import('@module/admin/app/tiredemand/search/search.module').then(m => m.TireDemandSearchModule)
                     }
                 ]},
             ]},
