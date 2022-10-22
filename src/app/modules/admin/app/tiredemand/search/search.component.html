@@ -17,7 +17,7 @@
             <!-- Title -->
             <div class="mt-2">
                 <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-                    Upload Tire Deand by OEM
+                    Upload Tire Demand by OEM
                 </h2>
             </div>
         </div>
@@ -43,14 +43,14 @@
                         </mat-select>
                         <mat-icon class="icon-size-5" matPrefix svgIcon="heroicons_outline:calendar"></mat-icon>
                     </mat-form-field>
-                    <label for="version">Version</label>
+                    <!-- <label for="version">Version</label>
                     <mat-form-field class="flex-auto ">
                         <input
                             matInput
                             [formControlName]="'version'"
                             name="version"
                             required>
-                    </mat-form-field>
+                    </mat-form-field> -->
                     <button mat-button mat-flat-button color="primary" [disabled]="form.invalid" (click)="search()">Search</button>
                   </div>
             </form>
@@ -61,7 +61,7 @@
                   <th mat-header-cell *matHeaderCellDef>File Name</th>
                   <td mat-cell *matCellDef="let element">
                     <a class="link"
-                        [routerLink]="['/app/vehicleprod/checking',element.uploadFileId]" >{{element.fileName}} </a>
+                        [routerLink]="['/app/tiredemand/view',element.uploadFileId]" >{{element.fileName}} </a>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="year">

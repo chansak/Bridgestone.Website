@@ -101,6 +101,10 @@ export const appRoutes: Route[] = [
                     {
                         path: 'search', 
                         loadChildren: () => import('@module/admin/app/tiredemand/search/search.module').then(m => m.TireDemandSearchModule)
+                    },
+                    {
+                        path: 'view/:id', 
+                        loadChildren: () => import('@module/admin/app/tiredemand/view/view.module').then(m => m.TireDemandViewModule)
                     }
                 ]},
             ]},
