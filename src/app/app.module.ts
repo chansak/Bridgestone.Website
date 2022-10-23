@@ -1,57 +1,50 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ExtraOptions, PreloadAllModules, RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import {HubConnectionBuilder,HubConnection} from "@microsoft/signalr"
+import {HubConnectionBuilder,HubConnection} from '@microsoft/signalr';
 
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './pages/top-bar/top-bar.component';
-import { ProductListComponent } from './pages/product-list/product-list.component';
-import { ProductAlertsComponent } from './pages/product-alerts/product-alerts.component';
-import { ProductDetailsComponent } from './pages/product-details/product-details.component';
-import { CartComponent } from './pages/cart/cart.component';
-import { ShippingComponent } from './pages/shipping/shipping.component';
-import { CartService } from './core/services/cart.service';
-import { AppSettingsService } from './core/services/app-settings-service.service';
-import {SignalrService} from '../app/core/services/signalr.service';
+import {SignalrService} from '@core/signalr/signalr.service';
 
+import { FuseModule } from '@fuse';
+import { FuseConfigModule } from '@fuse/services/config';
+import { FuseMockApiModule } from '@fuse/lib/mock-api';
+import { CoreModule } from 'app/core/core.module';
+import { appConfig } from 'app/core/config/app.config';
+import { mockApiServices } from 'app/mock-api';
+import { LayoutModule } from 'app/layout/layout.module';
+import { appRoutes } from 'app/app.routing';
+import { BrandComponent } from './modules/admin/setting/master/vehicle/brand/brand.component';
+import { ModelComponent } from './modules/admin/setting/master/vehicle/model/model.component';
+import { FuseAlertModule } from '@fuse/components/alert';
+const routerConfig: ExtraOptions = {
+  preloadingStrategy       : PreloadAllModules,
+  scrollPositionRestoration: 'enabled'
+};
 
-
-const routes: Routes = [
-  { path: '', component: ProductListComponent },
-  { path: 'products/:productId', component: ProductDetailsComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'shipping', component: ShippingComponent },
-];
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(appRoutes,routerConfig),
+    FuseModule,
+    FuseConfigModule.forRoot(appConfig),
+    FuseMockApiModule.forRoot(mockApiServices),
+    FuseAlertModule,
+    CoreModule,
+    LayoutModule,
+
   ],
   declarations: [
     AppComponent,
-    TopBarComponent,
-    ProductListComponent,
-    ProductAlertsComponent,
-    ProductDetailsComponent,
-    CartComponent,
-    ShippingComponent
+    BrandComponent,
+    ModelComponent,
   ],
-  providers: [
-    CartService,SignalrService,
-    {
-      provide: APP_INITIALIZER,
-      multi: true,
-      deps: [AppSettingsService],
-      useFactory: (appConfigService: AppSettingsService) => {
-        return () => {
-          return appConfigService.loadAppConfig();
-        };
-      }
-    }
+  providers:[
+    SignalrService
   ],
   bootstrap: [
     AppComponent

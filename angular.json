@@ -17,32 +17,60 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
+            "outputPath": "dist/bs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
+            "inlineStyleLanguage": "scss",
+            "allowedCommonJsDependencies": [
+                "apexcharts",
+                "highlight.js",
+                "crypto-js/enc-utf8",
+                "crypto-js/hmac-sha256",
+                "crypto-js/enc-base64",
+                "flat",
+                "moment",
+                "quill"
             ],
+            "assets": [
+                "src/favicon-16x16.png",
+                "src/favicon-32x32.png",
+                "src/assets",
+                {
+                    "glob": "_redirects",
+                    "input": "src",
+                    "output": "/"
+                }
+            ],
+            "stylePreprocessorOptions": {
+                "includePaths": [
+                    "src/@fuse/styles"
+                ]
+            },
             "styles": [
-              "src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/@fuse/styles/tailwind.scss",
+              "src/@fuse/styles/themes.scss",
+              "src/styles/vendors.scss",
+              "src/@fuse/styles/main.scss",
+              "src/styles/styles.scss",
+              "src/styles/tailwind.scss"
             ],
             "scripts": []
-          },
+        },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "80kb",
+                  "maximumError": "100kb"
                 }
               ],
               "fileReplacements": [
@@ -98,6 +126,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
